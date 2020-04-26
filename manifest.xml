@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+  <Id>79eedd76-2c7c-4681-9cfe-e72f3582bc6d</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>JPSDesigns</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Dev Mentor and Motivate"/>
+  <Description DefaultValue="Dev BMSS Mentor and Motivate"/>
+  <IconUrl DefaultValue="https://i.imgur.com/40YzO0g.png"/>
+  <HighResolutionIconUrl DefaultValue="https://i.imgur.com/40YzO0g.png"/>
+  <SupportUrl DefaultValue="http://zeal.bmss.com/kb/technology-support/"/>
+  <AppDomains>
+    <AppDomain>bmss.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="GroupLabel"/>
+                <Control xsi:type="Menu" id="msgReadOpenPaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="bluem"/>
+                    <bt:Image size="32" resid="bluem32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Items>
+                    <Item id="KUDOS">
+                      <Label resid="KUDOS.Label" />
+                      <Supertip>
+                        <Title resid="KUDOS.Label" />
+                        <Description resid="KUDOS.Tooltip" />
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="bluem"/>
+                        <bt:Image size="32" resid="bluem32"/>
+                        <bt:Image size="80" resid="Icon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ShowTaskpane">
+                        <SourceLocation resid="KUDOS.Url" />
+                      </Action>
+                    </Item>
+                    <Item id="ROLO">
+                      <Label resid="ROLO.Label" />
+                      <Supertip>
+                        <Title resid="ROLO.Label" />
+                        <Description resid="ROLO.Tooltip" />
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="greenm"/>
+                        <bt:Image size="32" resid="greenm32"/>
+                        <bt:Image size="80" resid="Icon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ShowTaskpane">
+                        <SourceLocation resid="ROLO.Url" />
+                      </Action>
+                    </Item>
+                  </Items>
+                </Control>
+                <Control xsi:type="Button" id="HomeroomOpenPane">
+                  <Label resid="Homeroom.Label"/>
+                  <Supertip>
+                    <Title resid="Homeroom.Label"/>
+                    <Description resid="Homeroom.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="greenm"/>
+                    <bt:Image size="32" resid="greenm32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Homeroom.Url"/>
+                  </Action>
+                </Control>
+                <!-- <Control xsi:type="Button" id="ActionButton">
+                  <Label resid="ActionButton.Label"/>
+                  <Supertip>
+                    <Title resid="ActionButton.Label"/>
+                    <Description resid="ActionButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>action</FunctionName>
+                  </Action>
+                </Control> -->
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="bluem" DefaultValue="https://i.imgur.com/Dr98bRo.png"/>
+        <bt:Image id="greenm" DefaultValue="https://i.imgur.com/jG19fLa.png"/>
+        <bt:Image id="bluem32" DefaultValue="https://i.imgur.com/iVpwZv9.png"/>
+        <bt:Image id="greenm32" DefaultValue="https://i.imgur.com/0fF8I2s.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://i.imgur.com/40YzO0g.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <!--<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/> -->
+        <bt:Url id="KUDOS.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/kudos"/>
+        <bt:Url id="ROLO.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/rolo" />
+        <bt:Url id="Homeroom.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="Mentor and Motivate"/>
+        <bt:String id="Homeroom.Label" DefaultValue="Homeroom Leaders" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="M+M Forms"/>
+        <bt:String id="KUDOS.Label" DefaultValue="KUDOS Form" />
+        <bt:String id="ROLO.Label" DefaultValue="ROLO Forms" />
+        <!-- <bt:String id="ActionButton.Label" DefaultValue="ROLO"/> -->
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="ROLO and KUDOS Forms"/>
+        <bt:String id="KUDOS.Tooltip" DefaultValue="Send a KUDOS to a coworker!" />
+        <bt:String id="ROLO.Tooltip" DefaultValue="Fill out a ROLO for a coworker!" />
+        <bt:String id="Homeroom.Tooltip" DefaultValue="Which of your Homeroom Members have you checked in with recently?" />
+        <!-- <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/> -->
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
