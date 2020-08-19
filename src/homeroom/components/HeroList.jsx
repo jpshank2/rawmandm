@@ -1,50 +1,58 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function HeroList(props) {
   const { message } = props;
 
   let [results, setResult]  = useState([])
   let [checked, setChecked] = useState([])
+  let [memberChecked, setMemberChecked] = useState(0)
 
-  let name = Office.context.mailbox.userProfile.displayName
-  let patt = /\s/g
+  let userName = Office.context.mailbox.userProfile.emailAddress.substring(0, (Office.context.mailbox.userProfile.emailAddress.length - 9))
+
+  var d = new Date(); 
+  var n = (d.getDate() - (d.getDay() - 1)); 
+  var monday = new Date(d.getFullYear(), d.getMonth(), n)
 
   useEffect(() => {
-    fetch(`http://bmss-devops.bmss.com/homeroom/${name.replace(patt, "_")}`)
+    fetch(`http://bmss-devops.bmss.com/homeroom/${userName}`)
       .then(res => {
         return res.json()
       })
       .then(data => {
         let results
-        if (data.error) {
-          results = <h3 style={{textAlign: "center"}}>{data.error}</h3>
-          document.getElementById("submit").disabled = true
-          document.getElementById("submit").style.cursor = "not-allowed"
+        if (data.recordsets[0].length < 1) {
+          results = (
+            <div key="checkin" style={{textAlign: "center"}}>
+              <h3>Has your Homeroom Leader checked in with you?</h3>
+              <label>
+                <input type="radio" name="check" value="1" required onChange={e => {
+                  setMemberChecked(parseInt(e.target.value))
+                }} /> Yes
+              </label>
+              <label>
+                <input type="radio" name="check" value="0" onChange={e => {
+                  setMemberChecked(parseInt(e.target.value))
+                }} /> No
+              </label>
+            </div>
+          )
         } else {
-          results = data.recordsets[0].map((result) => {
+          results = data.recordsets[0].map(result => {
+            let lastDate = new Date(result.LastDate)
             return (
-              <label key={result.StaffCode} className="m-label" onClick={e => {
-                if (checked.includes(e.target.value)) {
-                  let i = checked.indexOf(e.target.value)
-                  if (i == 0) {
-                    let filteredArray = checked
-                    filteredArray.shift()
-                    setChecked([... filteredArray])
-                  } else if (i - 1 == checked.length) {
-                    let filteredArray = checked
-                    filteredArray.pop()
-                    setChecked([... filteredArray])
-                  } else {
-                    let filteredArray = checked
-                    filteredArray.splice(i, 1)
-                    setChecked([... filteredArray])
-                  }
-                } else {
-                  setChecked([... checked, e.target.value])
-                }
-              }}>
-                <input type="checkbox" id={result.StaffCode} name={result.StaffCode} value={result.StaffName} />
-                {result.StaffName}
+              <label key={result.StaffCode}>How is this employee doing?
+              <br></br>
+                <select className="m-input" onChange={e => {
+                  setChecked([...checked, `${result.StaffName} - ${e.target.value}`])
+                }}>
+                  <option value="0">{result.StaffName}</option>
+                  <option value="1">Worst week ever - nothing went right this week</option>
+                  <option value="2">Not a good week - I am overwhelmed</option>
+                  <option value="3">Just an okay week - some good and some bad</option>
+                  <option value="4">Pretty good week - most things went right this week</option>
+                  <option value="5">Best week ever - I feel like a Rockstar</option>
+                </select>
+                <p className={lastDate > monday ? 'visible' : 'hidden'}>You have checked with them this week!</p>
               </label>
             )
           })
@@ -54,18 +62,32 @@ export default function HeroList(props) {
   })
 
   let click = async () => {
-    fetch("http://bmss-devops.bmss.com/homeroom/", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name: name,
-        checked: checked,
-        senderEmail: Office.context.mailbox.userProfile.emailAddress
+    if (checked.length > 0) {
+      fetch("http://bmss-devops.bmss.com/homeroom/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: Office.context.mailbox.userProfile.displayName,
+          checked: checked,
+          senderEmail: Office.context.mailbox.userProfile.emailAddress
+        })
       })
-    })
+    } else {
+      fetch("http://bmss-devops.bmss.com/homeroom-member/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          memberChecked: memberChecked,
+          senderEmail: Office.context.mailbox.userProfile.emailAddress
+        })
+      })
+    }
   }
 
   return (

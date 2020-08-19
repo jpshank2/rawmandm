@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 
 initializeIcons();
 
-let isOfficeInitialized = false;
+let isOfficeInitialized = true;
 
 const title = "Homeroom Leader Outlook Forms";
 

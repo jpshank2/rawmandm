@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
-  <Id>79eedd76-2c7c-4681-9cfe-e72f3582bc6d</Id>
-  <Version>1.0.0.0</Version>
+  <Id>10a13911-a4ed-45c8-8180-4b15c492f0b8</Id>
+  <Version>2.0.3.0</Version>
   <ProviderName>JPSDesigns</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Dev Mentor and Motivate"/>
@@ -89,13 +89,43 @@
                         <SourceLocation resid="ROLO.Url" />
                       </Action>
                     </Item>
+                    <Item id="Homeroom">
+                      <Label resid="Homeroom.Label"/>
+                      <Supertip>
+                        <Title resid="Homeroom.Label"/>
+                        <Description resid="Homeroom.Tooltip"/>
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="bluem"/>
+                        <bt:Image size="32" resid="bluem32"/>
+                        <bt:Image size="80" resid="Icon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ShowTaskpane">
+                        <SourceLocation resid="Homeroom.Url"/>
+                      </Action>
+                    </Item>
+                    <Item id="Other">
+                      <Label resid="Other.Label"/>
+                      <Supertip>
+                        <Title resid="Other.Label"/>
+                        <Description resid="Other.Tooltip"/>
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="greenm"/>
+                        <bt:Image size="32" resid="greenm32"/>
+                        <bt:Image size="80" resid="Icon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ShowTaskpane">
+                        <SourceLocation resid="Other.Url"/>
+                      </Action>
+                    </Item>
                   </Items>
                 </Control>
-                <Control xsi:type="Button" id="HomeroomOpenPane">
-                  <Label resid="Homeroom.Label"/>
+                <Control xsi:type="Button" id="DashboardOpenPane">
+                  <Label resid="Dashboard.Label"/>
                   <Supertip>
-                    <Title resid="Homeroom.Label"/>
-                    <Description resid="Homeroom.Tooltip"/>
+                    <Title resid="Dashboard.Label"/>
+                    <Description resid="Dashboard.Tooltip"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="greenm"/>
@@ -103,24 +133,9 @@
                     <bt:Image size="80" resid="Icon.80x80"/>
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="Homeroom.Url"/>
+                    <SourceLocation resid="Dashboard.Url"/>
                   </Action>
                 </Control>
-                <!-- <Control xsi:type="Button" id="ActionButton">
-                  <Label resid="ActionButton.Label"/>
-                  <Supertip>
-                    <Title resid="ActionButton.Label"/>
-                    <Description resid="ActionButton.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>action</FunctionName>
-                  </Action>
-                </Control> -->
               </Group>
             </OfficeTab>
           </ExtensionPoint>
@@ -136,25 +151,28 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://i.imgur.com/40YzO0g.png"/>
       </bt:Images>
       <bt:Urls>
-        <!--<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/> -->
         <bt:Url id="KUDOS.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/kudos"/>
         <bt:Url id="ROLO.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/rolo" />
         <bt:Url id="Homeroom.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/"/>
+        <bt:Url id="Dashboard.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/dashboard" />
+        <bt:Url id="Other.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/other" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Mentor and Motivate"/>
-        <bt:String id="Homeroom.Label" DefaultValue="Homeroom Leaders" />
+        <bt:String id="Homeroom.Label" DefaultValue="Homeroom Check Ins" />
         <bt:String id="TaskpaneButton.Label" DefaultValue="M+M Forms"/>
-        <bt:String id="KUDOS.Label" DefaultValue="KUDOS Form" />
-        <bt:String id="ROLO.Label" DefaultValue="ROLO Forms" />
-        <!-- <bt:String id="ActionButton.Label" DefaultValue="ROLO"/> -->
+        <bt:String id="KUDOS.Label" DefaultValue="KUDOS" />
+        <bt:String id="ROLO.Label" DefaultValue="ROLOS" />
+        <bt:String id="Dashboard.Label" DefaultValue="M+M Points Dashboard" />
+        <bt:String id="Other.Label" DefaultValue="Other M+M Events" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="ROLO and KUDOS Forms"/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="M+M Event Forms"/>
         <bt:String id="KUDOS.Tooltip" DefaultValue="Send a KUDOS to a coworker!" />
         <bt:String id="ROLO.Tooltip" DefaultValue="Fill out a ROLO for a coworker!" />
-        <bt:String id="Homeroom.Tooltip" DefaultValue="Which of your Homeroom Members have you checked in with recently?" />
-        <!-- <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/> -->
+        <bt:String id="Homeroom.Tooltip" DefaultValue="Homeroom Leaders and Members check in tracker" />
+        <bt:String id="Dashboard.Tooltip" DefaultValue="M+M Point totals and goals" />
+        <bt:String id="Other.Tooltip" DefaultValue="All other M+M Events" />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

@@ -71,7 +71,7 @@ export default function Kudos() {
         <input className="m-input" id="name" type="text" 
         onChange={(e) => {nameChange(e.target.value)}}
         required />
-        <ul id="sglist" className="suggestions">{results}</ul>
+        <ul id="sglist" className={results.length > 0 ? "suggestions" : "hidden"}>{results}</ul>
         <br></br>
         <label className="m-label" htmlFor="project">Project:</label>
         <input className="m-input" id="project" type="text"

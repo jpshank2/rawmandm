@@ -1,7 +1,7 @@
 import * as React from "react";
 import Header from "./Header";
 import Progress from "./Progress";
-import Landing from "./Landing.jsx";
+import Rolo from "./ROLO.jsx";
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -22,8 +22,8 @@ export default class App extends React.Component {
 
     return (
       <div className="ms-welcome">
-        <Header logo="https://i.imgur.com/40YzO0g.png" title={this.props.title} message="Homeroom Leader Check In" />
-        <Landing />
+        <Header logo="https://i.imgur.com/40YzO0g.png" title={this.props.title} message="M+M ROLO" />
+        <Rolo />
       </div>
     );
   }

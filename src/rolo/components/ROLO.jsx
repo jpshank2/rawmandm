@@ -33,7 +33,7 @@ export default function Rolo() {
   })
 
   let click = async () => {
-        if (direction) {
+        if (direction === 1) {
             fetch("http://bmss-devops.bmss.com/employees/upward", {
                 method: "POST",
                 headers: {
@@ -98,7 +98,7 @@ export default function Rolo() {
   }
 
   let directionChange = (query) => {
-      setDirection(query)
+      setDirection(parseInt(query))
   }
 
   return (
@@ -109,14 +109,14 @@ export default function Rolo() {
         onChange={(e) => {directionChange(e.target.value)}}
         required>
           <option value="" disabled selected>Select Below</option>
-          <option value={true}>Upward</option>
-          <option value={false}>Downward</option>
+          <option value="1">Upward</option>
+          <option value="0">Downward</option>
         </select>
         <label className="m-label" htmlFor="name">Employee:</label>
         <input className="m-input" id="name" type="text" 
         onChange={(e) => {nameChange(e.target.value)}}
         required />
-        <ul id="sglist" className="suggestions">{results}</ul>
+        <ul id="sglist" className={results.length > 0 ? "suggestions" : "hidden"}>{results}</ul>
         <br></br>
         <label className="m-label" htmlFor="project">Project:</label>
         <input className="m-input" id="project" type="text"
@@ -138,13 +138,11 @@ export default function Rolo() {
         <br></br>
         <label className="m-label" htmlFor="retain">Retain One:</label>
         <textarea className="m-input" id="describe" form="rolo" 
-        onChange={e => {retainChange(e.target.value)}}
-        required></textarea>
+        onChange={e => {retainChange(e.target.value)}}></textarea>
         <br></br>
         <label className="m-label" htmlFor="lose">Lose One:</label>
         <textarea className="m-input" id="describe" form="rolo" 
-        onChange={e => {loseChange(e.target.value)}}
-        required></textarea>
+        onChange={e => {loseChange(e.target.value)}}></textarea>
         <br></br>
         <label className="m-label" htmlFor="cornerstone">Did this employee exhibit any of the BMSS Cornstones during this project?</label>
         <select className="m-input" id="cornerstone" 
@@ -157,7 +155,7 @@ export default function Rolo() {
           <option value="Innovation">Innovation</option>
           <option value="Presentation">Presentation</option>
         </select>
-        <input type="submit" value="Submit" className= "submit-btn" onClick={click} />
+        <input type="submit" value="Submit" className="submit-btn" onClick={click} />
       </form>
     </main>
   )

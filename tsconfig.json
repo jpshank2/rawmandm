@@ -25,6 +25,7 @@
     "exclude": [
         "node_modules"
     ],
+    "include": ["file.ts"],
     "compileOnSave": false,
     "buildOnSave": false
 }

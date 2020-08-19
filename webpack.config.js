@@ -24,7 +24,9 @@ module.exports = async (env, options)  => {
     taskpane: './src/taskpane/index.js',
     rolo: './src/rolo/index.js',
     homeroom: './src/homeroom/index.js',
-    commands: './src/commands/commands.js'
+    commands: './src/commands/commands.js',
+    dashboard: './src/dashboard/index.js',
+    other: './src/other/index.js'
     },
     resolve: {
       extensions: [".ts", ".tsx", ".html", ".js"]
@@ -89,6 +91,28 @@ module.exports = async (env, options)  => {
         filename: "rolo.html",
           template: './src/rolo/rolo.html',
           chunks: ['rolo', 'vendor', 'polyfill']
+      }),
+      new CopyWebpackPlugin([
+        {
+          to: "dashboard.css",
+          from: "./src/dashboard/dashboard.css"
+        }
+      ]),
+      new HtmlWebpackPlugin({
+        filename: "dashboard.html",
+          template: './src/dashboard/dashboard.html',
+          chunks: ['dashboard', 'polyfill']
+      }),
+      new CopyWebpackPlugin([
+        {
+          to: "other.css",
+          from: "./src/other/other.css"
+        }
+      ]),
+      new HtmlWebpackPlugin({
+        filename: "other.html",
+          template: './src/other/other.html',
+          chunks: ['other', 'vendor', 'polyfill']
       }),
       new HtmlWebpackPlugin({
           filename: "commands.html",
