@@ -5,7 +5,7 @@ export default function HeroList(props) {
 
   let [results, setResult]  = useState([])
   let [checked, setChecked] = useState([])
-  let [memberChecked, setMemberChecked] = useState(0)
+  let [memberChecked, setMemberChecked] = useState(3)
 
   let userName = Office.context.mailbox.userProfile.emailAddress.substring(0, (Office.context.mailbox.userProfile.emailAddress.length - 9))
 
@@ -20,23 +20,7 @@ export default function HeroList(props) {
       })
       .then(data => {
         let results
-        if (data.recordsets[0].length < 1) {
-          results = (
-            <div key="checkin" style={{textAlign: "center"}}>
-              <h3>Has your Homeroom Leader checked in with you?</h3>
-              <label>
-                <input type="radio" name="check" value="1" required onChange={e => {
-                  setMemberChecked(parseInt(e.target.value))
-                }} /> Yes
-              </label>
-              <label>
-                <input type="radio" name="check" value="0" onChange={e => {
-                  setMemberChecked(parseInt(e.target.value))
-                }} /> No
-              </label>
-            </div>
-          )
-        } else {
+        if (data.recordsets[0].length > 0) {
           results = data.recordsets[0].map(result => {
             let lastDate = new Date(result.LastDate)
             return (
@@ -62,32 +46,19 @@ export default function HeroList(props) {
   })
 
   let click = async () => {
-    if (checked.length > 0) {
-      fetch("http://bmss-devops.bmss.com/homeroom/", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: Office.context.mailbox.userProfile.displayName,
-          checked: checked,
-          senderEmail: Office.context.mailbox.userProfile.emailAddress
-        })
+    fetch("http://bmss-devops.bmss.com/homeroom-test/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: Office.context.mailbox.userProfile.displayName,
+        checked: checked,
+        senderEmail: Office.context.mailbox.userProfile.emailAddress,
+        memberChecked: memberChecked
       })
-    } else {
-      fetch("http://bmss-devops.bmss.com/homeroom-member/", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          memberChecked: memberChecked,
-          senderEmail: Office.context.mailbox.userProfile.emailAddress
-        })
-      })
-    }
+    })
   }
 
   return (
@@ -95,6 +66,19 @@ export default function HeroList(props) {
       <h2 className="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">{message}</h2>
       <form id="kudos">
         {results}
+        <div key="checkin" style={{textAlign: "center"}}>
+          <h3>Has your Homeroom Leader checked in with you?</h3>
+          <label>
+            <input type="radio" name="check" value="1" required onChange={e => {
+              setMemberChecked(parseInt(e.target.value))
+            }} /> Yes
+          </label>
+          <label>
+            <input type="radio" name="check" value="0" onChange={e => {
+              setMemberChecked(parseInt(e.target.value))
+            }} /> No
+          </label>
+        </div>
         <input type="submit" value="Submit" id="submit" className="submit-btn" onClick={click} />
       </form>
     </main>
