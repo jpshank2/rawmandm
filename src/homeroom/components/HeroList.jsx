@@ -19,7 +19,7 @@ export default function HeroList(props) {
         return res.json()
       })
       .then(data => {
-        let results
+        let results = []
         if (data.recordsets[0].length > 0) {
           results = data.recordsets[0].map(result => {
             let lastDate = new Date(result.LastDate)
@@ -66,7 +66,7 @@ export default function HeroList(props) {
       <h2 className="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">{message}</h2>
       <form id="kudos">
         {results}
-        <div key="checkin" style={{textAlign: "center"}}>
+        <div style={{textAlign: "center"}}>
           <h3>Has your Homeroom Leader checked in with you?</h3>
           <label>
             <input type="radio" name="check" value="1" required onChange={e => {

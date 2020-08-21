@@ -58,57 +58,67 @@ module.exports = async (env, options)  => {
     },    
     plugins: [
       new CleanWebpackPlugin(),
-      new CopyWebpackPlugin([
-        {
-          to: "taskpane.css",
-          from: "./src/taskpane/taskpane.css"
-        }
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            to: "taskpane.css",
+            from: "./src/taskpane/taskpane.css"
+          }
+        ]
+      }),
       new ExtractTextPlugin('[name].[hash].css'),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
           template: './src/taskpane/taskpane.html',
           chunks: ['taskpane', 'vendor', 'polyfill']
       }),
-      new CopyWebpackPlugin([
-        {
-          to: "homeroom.css",
-          from: "./src/homeroom/homeroom.css"
-        }
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            to: "homeroom.css",
+            from: "./src/homeroom/homeroom.css"
+          }
+        ]
+      }),
       new HtmlWebpackPlugin({
         filename: "homeroom.html",
           template: './src/homeroom/homeroom.html',
           chunks: ['homeroom', 'polyfill']
       }),
-      new CopyWebpackPlugin([
-        {
-          to: "rolo.css",
-          from: "./src/rolo/rolo.css"
-        }
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            to: "rolo.css",
+            from: "./src/rolo/rolo.css"
+          }
+        ]
+      }),
       new HtmlWebpackPlugin({
         filename: "rolo.html",
           template: './src/rolo/rolo.html',
           chunks: ['rolo', 'vendor', 'polyfill']
       }),
-      new CopyWebpackPlugin([
-        {
-          to: "dashboard.css",
-          from: "./src/dashboard/dashboard.css"
-        }
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            to: "dashboard.css",
+            from: "./src/dashboard/dashboard.css"
+          }
+        ]
+      }),
       new HtmlWebpackPlugin({
         filename: "dashboard.html",
           template: './src/dashboard/dashboard.html',
           chunks: ['dashboard', 'polyfill']
       }),
-      new CopyWebpackPlugin([
-        {
-          to: "other.css",
-          from: "./src/other/other.css"
-        }
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            to: "other.css",
+            from: "./src/other/other.css"
+          }
+        ]
+      }),
       new HtmlWebpackPlugin({
         filename: "other.html",
           template: './src/other/other.html',
@@ -119,13 +129,17 @@ module.exports = async (env, options)  => {
           template: "./src/commands/commands.html",
           chunks: ["commands"]
       }),
-      new CopyWebpackPlugin([
+      new CopyWebpackPlugin({
+        patterns: [
           {
-              from: './assets',
-              ignore: ['*.scss'],
-              to: 'assets',
+            to: "assets",
+            from: "./assets",
+            globOptions: {
+              ignore: ['*scss']
+            }
           }
-      ]),
+        ]
+      }),
       new webpack.ProvidePlugin({
         Promise: ["es6-promise", "Promise"]
       })

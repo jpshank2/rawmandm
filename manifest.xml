@@ -153,7 +153,7 @@
       <bt:Urls>
         <bt:Url id="KUDOS.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/kudos"/>
         <bt:Url id="ROLO.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/rolo" />
-        <bt:Url id="Homeroom.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/"/>
+        <bt:Url id="Homeroom.Url" DefaultValue="https://localhost:3000/homeroom.html"/>
         <bt:Url id="Dashboard.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/dashboard" />
         <bt:Url id="Other.Url" DefaultValue="https://nameless-shelf-24960.herokuapp.com/other" />
       </bt:Urls>
