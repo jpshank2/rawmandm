@@ -25,7 +25,7 @@ export default class App extends React.Component {
     return (
       <div className="ms-welcome">
         <Header logo="https://i.imgur.com/40YzO0g.png" title={this.props.title} message="Homeroom Leader Check In" />
-        <HeroList message="Mark which one of your homeroom members you've checked in with!" />
+        <HeroList />
       </div>
     );
   }

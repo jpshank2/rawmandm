@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function HeroList(props) {
-  const { message } = props;
-
+export default function HeroList() {
   let [results, setResult]  = useState([])
   let [checked, setChecked] = useState([])
   let [memberChecked, setMemberChecked] = useState(3)
@@ -63,7 +61,7 @@ export default function HeroList(props) {
 
   return (
     <main className="ms-welcome__main">
-      <h2 className="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">{message}</h2>
+      <h2 className="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">Mark which one of your Homeroom members you've checked in with or if your Homeroom Leader has checked in with you!</h2>
       <form id="kudos">
         {results}
         <div style={{textAlign: "center"}}>
