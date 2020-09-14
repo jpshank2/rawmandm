@@ -44,7 +44,7 @@ export default function HeroList() {
   })
 
   let click = async () => {
-    fetch("http://bmss-devops.bmss.com/homeroom-test/", {
+    fetch("http://bmss-devops.bmss.com/homeroom/", {
       method: "POST",
       headers: {
         Accept: "application/json",
