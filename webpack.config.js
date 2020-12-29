@@ -25,11 +25,11 @@ module.exports = async (env, options)  => {
     rolo: './src/rolo/index.js',
     homeroom: './src/homeroom/index.js',
     commands: './src/commands/commands.js',
-    dashboard: './src/dashboard/index.js',
-    other: './src/other/index.js'
+    dashboard: './src/dashboard/index.js'
+    // other: './src/other/index.js'
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".html", ".js"]
+      extensions: [".ts", ".tsx", ".html", ".js", "jsx"]
     },
     module: {
       rules: [
@@ -111,19 +111,19 @@ module.exports = async (env, options)  => {
           template: './src/dashboard/dashboard.html',
           chunks: ['dashboard', 'polyfill']
       }),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            to: "other.css",
-            from: "./src/other/other.css"
-          }
-        ]
-      }),
-      new HtmlWebpackPlugin({
-        filename: "other.html",
-          template: './src/other/other.html',
-          chunks: ['other', 'vendor', 'polyfill']
-      }),
+      // new CopyWebpackPlugin({
+      //   patterns: [
+      //     {
+      //       to: "other.css",
+      //       from: "./src/other/other.css"
+      //     }
+      //   ]
+      // }),
+      // new HtmlWebpackPlugin({
+      //   filename: "other.html",
+      //     template: './src/other/other.html',
+      //     chunks: ['other', 'vendor', 'polyfill']
+      // }),
       new HtmlWebpackPlugin({
           filename: "commands.html",
           template: "./src/commands/commands.html",

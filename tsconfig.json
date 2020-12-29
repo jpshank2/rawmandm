@@ -25,7 +25,7 @@
     "exclude": [
         "node_modules"
     ],
-    "include": ["file.ts"],
+    "include": ["file.ts", "webpack.config.js", "*.js"],
     "compileOnSave": false,
     "buildOnSave": false
 }

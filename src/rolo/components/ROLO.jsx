@@ -6,7 +6,6 @@ export default function Rolo() {
   let [email, setEmail]             = useState("")
   let [results, setResult]          = useState([])
   let [project, setProject]         = useState("")
-  let [cornerstone, setCornerstone] = useState("")
   let [retain, setRetain]           = useState("")
   let [lose, setLose]               = useState("")
   let [rating, setRating]           = useState("")
@@ -43,7 +42,6 @@ export default function Rolo() {
                 body: JSON.stringify({
                 name: name,
                 project: project,
-                cornerstone: cornerstone,
                 retain: retain,
                 lose: lose,
                 rating: rating,
@@ -61,7 +59,6 @@ export default function Rolo() {
                 body: JSON.stringify({
                     name: name,
                     project: project,
-                    cornerstone: cornerstone,
                     retain: retain,
                     lose: lose,
                     rating: rating,
@@ -79,10 +76,6 @@ export default function Rolo() {
 
   let projectChange = (query) => {
     setProject(query)
-  }
-
-  let cornerstoneChange = (query) => {
-    setCornerstone(query)
   }
 
   let retainChange = (query) => {
@@ -144,17 +137,6 @@ export default function Rolo() {
         <textarea className="m-input" id="describe" form="rolo" 
         onChange={e => {loseChange(e.target.value)}}></textarea>
         <br></br>
-        <label className="m-label" htmlFor="cornerstone">Did this employee exhibit any of the BMSS Cornstones during this project?</label>
-        <select className="m-input" id="cornerstone" 
-        onChange={(e) => {cornerstoneChange(e.target.value)}}
-        required>
-          <option value="" disabled selected>Select Below</option>
-          <option value="None">None</option>
-          <option value="Xpertegrity">Xpertegrity</option>
-          <option value="Relationship">Relationship</option>
-          <option value="Innovation">Innovation</option>
-          <option value="Presentation">Presentation</option>
-        </select>
         <input type="submit" value="Submit" className="submit-btn" onClick={click} />
       </form>
     </main>
