@@ -1,6 +1,7 @@
 import * as React from "react";
 import Header from "./Header";
 import Dashboard from './Dashboard.jsx'
+import Progress from './Progress'
 
 export default class App extends React.Component {
   constructor(props) {
