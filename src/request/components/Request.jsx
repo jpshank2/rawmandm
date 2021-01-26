@@ -63,7 +63,7 @@ export default function Request() {
                 <br></br>
                 <label className="m-label" htmlFor="project">Project:</label>
                 <input className="m-input" id="project" type="text"
-                onChange={(e) => {projectChange(e.target.value)}}
+                onBlur={(e) => {projectChange(e.target.value)}}
                 required />
                 <br></br>
                 <input type="submit" value="Submit" className="submit-btn" onClick={click} />
