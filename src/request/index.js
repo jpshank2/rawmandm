@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 
 initializeIcons();
 
-let isOfficeInitialized = true;
+let isOfficeInitialized = false;
 
 const title = "M+M Forms";
 

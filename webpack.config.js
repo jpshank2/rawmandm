@@ -25,7 +25,8 @@ module.exports = async (env, options)  => {
     rolo: './src/rolo/index.js',
     homeroom: './src/homeroom/index.js',
     commands: './src/commands/commands.js',
-    dashboard: './src/dashboard/index.js'
+    dashboard: './src/dashboard/index.js',
+    request: './src/request/index.js'
     // other: './src/other/index.js'
     },
     resolve: {
@@ -97,6 +98,19 @@ module.exports = async (env, options)  => {
         filename: "rolo.html",
           template: './src/rolo/rolo.html',
           chunks: ['rolo', 'vendor', 'polyfill']
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            to: "request.css",
+            from: "./src/request/request.css"
+          }
+        ]
+      }),
+      new HtmlWebpackPlugin({
+        filename: "request.html",
+          template: './src/request/request.html',
+          chunks: ['request', 'vendor', 'polyfill']
       }),
       new CopyWebpackPlugin({
         patterns: [

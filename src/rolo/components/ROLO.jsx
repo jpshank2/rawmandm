@@ -113,7 +113,7 @@ export default function Rolo() {
         <br></br>
         <label className="m-label" htmlFor="project">Project:</label>
         <input className="m-input" id="project" type="text"
-        onChange={(e) => {projectChange(e.target.value)}}
+        onBlur={(e) => {projectChange(e.target.value)}}
         required />
         <br></br>
         <label className="m-label">How did this employee do on this project?</label>
@@ -131,11 +131,11 @@ export default function Rolo() {
         <br></br>
         <label className="m-label" htmlFor="retain">Retain One:</label>
         <textarea className="m-input" id="describe" form="rolo" 
-        onChange={e => {retainChange(e.target.value)}}></textarea>
+        onBlur={e => {retainChange(e.target.value)}}></textarea>
         <br></br>
         <label className="m-label" htmlFor="lose">Lose One:</label>
         <textarea className="m-input" id="describe" form="rolo" 
-        onChange={e => {loseChange(e.target.value)}}></textarea>
+        onBlur={e => {loseChange(e.target.value)}}></textarea>
         <br></br>
         <input type="submit" value="Submit" className="submit-btn" onClick={click} />
       </form>

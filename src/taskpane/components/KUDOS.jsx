@@ -75,7 +75,7 @@ export default function Kudos() {
         <br></br>
         <label className="m-label" htmlFor="project">Project:</label>
         <input className="m-input" id="project" type="text"
-        onChange={(e) => {projectChange(e.target.value)}}
+        onBlur={(e) => {projectChange(e.target.value)}}
         required />
         <br></br>
         <label className="m-label" htmlFor="cornerstone">What Cornerstone was exhibited?</label>
@@ -90,7 +90,7 @@ export default function Kudos() {
         </select>
         <label className="m-label" htmlFor="describe">How did this employee exhibit this Cornerstone?</label>
         <textarea className="m-input" id="describe" form="kudos" 
-        onChange={e => {describeChange(e.target.value)}}
+        onBlur={e => {describeChange(e.target.value)}}
         required></textarea>
         <input type="submit" value="Submit" className="submit-btn" onClick={click} />
       </form>
