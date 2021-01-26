@@ -7,7 +7,7 @@ export default function Dashboard() {
     let [kudos, setKudos] = useState(0)
     let [homeroom, setHomeroom] = useState(0)
     let [total, setTotal] = useState(0)
-    let userName = 'jeremyshank' //Office.context.mailbox.userProfile.emailAddress.substring(0, (Office.context.mailbox.userProfile.emailAddress.length - 9))
+    let userName = Office.context.mailbox.userProfile.emailAddress.substring(0, (Office.context.mailbox.userProfile.emailAddress.length - 9))
 
     useEffect(() => {
         fetch(`http://bmss-devops.bmss.com/mandm/${userName}`)
