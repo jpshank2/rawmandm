@@ -12,7 +12,7 @@ export default function HeroList() {
   var monday = new Date(d.getFullYear(), d.getMonth(), n)
 
   useEffect(() => {
-    fetch(`http://bmss-devops.bmss.com/homeroom/${userName}`)
+    fetch(`https://bmss-devops.bmss.com/homeroom/${userName}`)
       .then(res => {
         return res.json()
       })
@@ -44,7 +44,7 @@ export default function HeroList() {
   })
 
   let click = async () => {
-    fetch("http://bmss-devops.bmss.com/homeroom/", {
+    fetch("https://bmss-devops.bmss.com/homeroom/", {
       method: "POST",
       headers: {
         Accept: "application/json",

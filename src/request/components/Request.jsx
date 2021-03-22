@@ -7,7 +7,7 @@ export default function Request() {
 
     useEffect(() => {
         if (name.length > 0) {
-            fetch(`http://bmss-devops.bmss.com/employees/${name}`)
+            fetch(`https://bmss-devops.bmss.com/employees/${name}`)
             .then(res => {
               return res.json()
             })
@@ -36,7 +36,7 @@ export default function Request() {
 
     const click = async () => {
         if (name.length > 1 && project.length > 0) {
-            fetch("http://bmss-devops.bmss.com/mandm/request", {
+            fetch("https://bmss-devops.bmss.com/mandm/request", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",

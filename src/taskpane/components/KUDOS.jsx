@@ -10,7 +10,7 @@ export default function Kudos() {
   let [description, setDescription] = useState("")
   
   useEffect(() => {
-    fetch(`http://bmss-devops.bmss.com/employees/${name}`)
+    fetch(`https://bmss-devops.bmss.com/employees/${name}`)
       .then(res => {
         return res.json()
       })
@@ -30,7 +30,7 @@ export default function Kudos() {
   })
 
   let click = async () => {
-    fetch("http://bmss-devops.bmss.com/employees/", {
+    fetch("https://bmss-devops.bmss.com/employees/", {
       method: "POST",
       headers: {
         Accept: "application/json",

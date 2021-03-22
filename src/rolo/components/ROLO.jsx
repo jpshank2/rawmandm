@@ -12,7 +12,7 @@ export default function Rolo() {
   let [direction, setDirection]     = useState("")
   
   useEffect(() => {
-    fetch(`http://bmss-devops.bmss.com/employees/${name}`)
+    fetch(`https://bmss-devops.bmss.com/employees/${name}`)
       .then(res => {
         return res.json()
       })
@@ -33,7 +33,7 @@ export default function Rolo() {
 
   let click = async () => {
         if (direction === 1) {
-            fetch("http://bmss-devops.bmss.com/employees/upward", {
+            fetch("https://bmss-devops.bmss.com/employees/upward", {
                 method: "POST",
                 headers: {
                 Accept: "application/json",
@@ -50,7 +50,7 @@ export default function Rolo() {
                 })
             })
         } else {
-            fetch("http://bmss-devops.bmss.com/employees/downward", {
+            fetch("https://bmss-devops.bmss.com/employees/downward", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",

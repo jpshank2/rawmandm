@@ -10,7 +10,7 @@ export default function Dashboard() {
     let userName = Office.context.mailbox.userProfile.emailAddress.substring(0, (Office.context.mailbox.userProfile.emailAddress.length - 9))
 
     useEffect(() => {
-        fetch(`http://bmss-devops.bmss.com/mandm/${userName}`)
+        fetch(`https://bmss-devops.bmss.com/mandm/${userName}`)
             .then(res => {
                 return res.json()
             })

@@ -7,7 +7,7 @@ export default function Other() {
     let [notes, setNotes] = useState("")
 
     useEffect(() => {
-        fetch(`http://bmss-devops.bmss.com/employees/${name}`)
+        fetch(`https://bmss-devops.bmss.com/employees/${name}`)
           .then(res => {
             return res.json()
           })
@@ -27,7 +27,7 @@ export default function Other() {
 
     let click = async () => {
         if (option < 10) {
-            fetch(`http://bmss-devops.bmss.com/mandm/other`, {
+            fetch(`https://bmss-devops.bmss.com/mandm/other`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
