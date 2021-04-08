@@ -18,8 +18,8 @@ export default function HeroList() {
       })
       .then(data => {
         let results = []
-        if (data.recordsets[0].length > 0) {
-          results = data.recordsets[0].map(result => {
+        if (data.length > 0) {
+          results = data.map(result => {
             let lastDate = new Date(result.LastDate)
             return (
               <label key={result.StaffCode}>How is this employee doing?
@@ -67,7 +67,7 @@ export default function HeroList() {
         <div style={{textAlign: "center"}}>
           <h3>Has your Homeroom Leader checked in with you?</h3>
           <label>
-            <input type="radio" name="check" value="1" required onChange={e => {
+            <input type="radio" name="check" value="1" onChange={e => {
               setMemberChecked(parseInt(e.target.value))
             }} /> Yes
           </label>

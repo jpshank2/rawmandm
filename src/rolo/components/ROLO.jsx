@@ -17,7 +17,7 @@ export default function Rolo() {
         return res.json()
       })
       .then(data => {
-        let results = data.recordsets[0].map((result) => {
+        let results = data.map((result) => {
           return (
             <li key={result.ContIndex} className="suggestion" onClick={() => {
               document.getElementById("name").value = result.StaffName
@@ -41,6 +41,7 @@ export default function Rolo() {
                 },
                 body: JSON.stringify({
                 name: name,
+                userEmail: email,
                 project: project,
                 retain: retain,
                 lose: lose,

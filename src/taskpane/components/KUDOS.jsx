@@ -15,7 +15,7 @@ export default function Kudos() {
         return res.json()
       })
       .then(data => {
-        let results = data.recordsets[0].map((result) => {
+        let results = data.map((result) => {
           return (
             <li key={result.ContIndex} className="suggestion" onClick={() => {
               document.getElementById("name").value = result.StaffName

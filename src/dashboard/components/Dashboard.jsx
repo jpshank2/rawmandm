@@ -15,9 +15,9 @@ export default function Dashboard() {
                 return res.json()
             })
             .then(data => {
-                setKudos(data.recordsets[0][0].KUDOS >= 12 ? 12 : data.recordsets[0][0].KUDOS)
-                setHomeroom(data.recordsets[0][0].Homeroom >= 16 ? 16 : data.recordsets[0][0].Homeroom)
-                setTotal(data.recordsets[0][0].ROLOUpward + data.recordsets[0][0].ROLODownward + kudos + homeroom)
+                setKudos(data.KUDOS >= 12 ? 12 : data.KUDOS)
+                setHomeroom(data.Homeroom >= 16 ? 16 : data.Homeroom)
+                setTotal(data.ROLOUpward + data.ROLODownward + kudos + homeroom)
             
                 let results = data.recordsets[0].map(result => {
                     let date = ""
