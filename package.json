@@ -34,7 +34,7 @@
     "dotenv": "^8.2.0",
     "es6-promise": "^4.2.8",
     "office-ui-fabric-react": "^7.112.0",
-    "pm2": "^4.4.0",
+    "pm2": "^5.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
